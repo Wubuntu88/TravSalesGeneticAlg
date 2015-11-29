@@ -228,7 +228,7 @@ def tour_has_None(tour):
 
 
 cities_list = read_in_cities("cities.txt")
-cities_list = cities_list[:59] # breaks
+#cities_list = cities_list[:] # breaks
 
 MUTATION_RATE = 0.05
 
@@ -241,17 +241,12 @@ for i in range(1, len_pop - 1):
     if tour_length(population[i]) < tour_length(the_best):
         the_best = population[i]
 iterations = 0
-limit = 50
+limit = 250
 
-for the_city in population[0]:
-    print(the_city)
 while iterations < limit:
     # print("iteration: ", iterations)
     population = evolve_population(pop=population, mutation_rate=MUTATION_RATE)
-    '''
-    for that_city in population[0]:
-        print(that_city)
-        '''
+
     if tour_length(population[0]) < tour_length(the_best):
         the_best = population[0]
     iterations += 1
